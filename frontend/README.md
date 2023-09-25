@@ -1,5 +1,5 @@
 ## Instalación de Paquetes
-
+commit de prueba
 Para mejorar la funcionalidad y diseño de tu aplicación, es necesario instalar ciertos paquetes y bibliotecas. Ejecuta el siguiente comando en tu terminal:
 
 ```bash 
