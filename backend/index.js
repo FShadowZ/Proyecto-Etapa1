@@ -1,8 +1,12 @@
 import express from "express"
+import authRoutes from "./routes/auth.js"
+import usuariosRoutes from "./routes/usuarios.js"
 import postRoutes from "./routes/posts.js"
 
 const app = express()
 app.use(express.json())
+app.use("/Backend/auth", authRoutes)
+app.use("/Backend/usuarios", usuariosRoutes)
 app.use("/Backend/posts", postRoutes)
 
 
