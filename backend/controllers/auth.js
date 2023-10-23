@@ -32,7 +32,7 @@ export const login = (req, res)=>{
 
     const q = "SELECT * FROM usuarios WHERE rut = ?";
 
-    db.query(q, [req.body.username], (err, data)=>{
+    db.query(q, [req.body.rut], (err, data)=>{
         if (err) return res.json(err);
         if (data.length === 0) return res.status(404).json ("Usuario no encontrado");
 
