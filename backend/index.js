@@ -2,9 +2,11 @@ import express from "express"
 import authRoutes from "./routes/auth.js"
 import usuariosRoutes from "./routes/usuarios.js"
 import postRoutes from "./routes/posts.js"
+import cookieParser from "cookie-parser"
 
 const app = express()
 app.use(express.json())
+app.use(cookieParser())
 app.use("/Backend/auth", authRoutes)
 app.use("/Backend/usuarios", usuariosRoutes)
 app.use("/Backend/posts", postRoutes)
