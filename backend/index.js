@@ -3,6 +3,12 @@ import authRoutes from "./routes/auth.js";
 import usuariosRoutes from "./routes/usuarios.js";
 import postRoutes from "./routes/posts.js";
 import animalRoutes from "./routes/animalRoutes.js";
+import animalRoutes1 from "./routes/animalRoutes1.js";
+import NombreRouter from "./routes/NombreRouter.js"
+import NombreRouter1 from "./routes/NombreRouter1.js"
+import CountRouter from "./routes/ContRouter.js";
+import CountRouter1 from "./routes/ContRouter1.js";
+
 import cookieParser from "cookie-parser";
 import cors from 'cors';
 import { createRequire } from "module";
@@ -63,8 +69,16 @@ app.use("/Backend/auth", authRoutes);
 app.use("/Backend/usuarios", usuariosRoutes);
 app.use("/Backend/posts", postRoutes);
 app.use('/api', animalRoutes);
+
+app.use('/api', animalRoutes1);
+app.use('/api', CountRouter);
+app.use('/api', CountRouter1);
+app.use('/api',NombreRouter);
+app.use('/api',NombreRouter1);
+
 app.use(express.json())
 app.use("/api/users", usersRoute);
+
 
 
 app.get("/test", (req, res) => {

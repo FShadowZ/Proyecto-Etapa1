@@ -1,9 +1,9 @@
-import { obtenerDetallesAnimalPorNombre } from '../models/AnimalModel.js';
+import { obtenerDetallesAnimalPorNombre1 } from '../models/AnimalModel1.js';
 
-const obtenerDetallesAnimal = async (req, res) => {
+const obtenerDetallesAnimal1 = async (req, res) => {
   const nombreAnimal = req.params.nombre;
   try {
-    const detallesAnimal = await obtenerDetallesAnimalPorNombre(nombreAnimal);
+    const detallesAnimal = await obtenerDetallesAnimalPorNombre1(nombreAnimal);
     if (detallesAnimal.length > 0) {
       res.json(detallesAnimal);
     } else {
@@ -17,4 +17,4 @@ const obtenerDetallesAnimal = async (req, res) => {
 
 
 
-export { obtenerDetallesAnimal };
+export { obtenerDetallesAnimal1 };

@@ -1,10 +1,10 @@
 import express from 'express';
-import { obtenerDetallesAnimal } from '../controllers/AnimalController.js';
+import { obtenerDetallesAnimal1 } from '../controllers/AnimalController1.js';
 
 const router = express.Router();
 
 // Endpoint para obtener detalles de un animal por nombre
-router.get('/animal/:nombre', obtenerDetallesAnimal);
+router.get('/animal1/:nombre', obtenerDetallesAnimal1);
 
 
 

@@ -1,8 +1,8 @@
 import { db } from "../db.js";
 
-const obtenerDetallesAnimalPorNombre = async (nombre) => {
+const obtenerDetallesAnimalPorNombre1 = async (nombre) => {
     return new Promise((resolve, reject) => {
-        db.query('SELECT nombre, raza, genero FROM animal WHERE nombre = ? AND especie = "gato"', [nombre], (error, resultados) => {
+        db.query('SELECT nombre, raza, genero FROM animal WHERE nombre = ? AND especie = "perro"', [nombre], (error, resultados) => {
             if (error) {
                 console.error('Error al obtener detalles del animal:', error);
                 return reject(error);
@@ -24,10 +24,10 @@ const obtenerDetallesAnimalPorNombre = async (nombre) => {
     });
 };
 
-const contarFilasAnimal = async () => {
+const contarFilasAnimal1 = async () => {
     return new Promise((resolve, reject) => {
         console.log("Ejecutando consulta SQL para contar filas...");
-        db.query('SELECT COUNT(*) AS total FROM animal WHERE especie = "gato"', (error, resultados) => {
+        db.query('SELECT COUNT(*) AS total FROM animal WHERE especie = "perro"', (error, resultados) => {
             if (error) {
                 console.error('Error al contar filas en la tabla animal:', error);
                 return reject(error);
@@ -37,9 +37,9 @@ const contarFilasAnimal = async () => {
         });
     });
 };
-const obtenerNombresAnimales = async () => {
+const obtenerNombresAnimales1 = async () => {
     return new Promise((resolve, reject) => {
-        db.query('SELECT nombre FROM animal WHERE especie = "gato"', (error, resultados) => {
+        db.query('SELECT nombre FROM animal WHERE especie = "perro"', (error, resultados) => {
             if (error) {
                 console.error('Error al obtener nombres de animales:', error);
                 return reject(error);
@@ -56,4 +56,4 @@ const obtenerNombresAnimales = async () => {
     });
 };
 
-export { obtenerDetallesAnimalPorNombre, contarFilasAnimal,obtenerNombresAnimales };
+export { obtenerDetallesAnimalPorNombre1, contarFilasAnimal1,obtenerNombresAnimales1 };
