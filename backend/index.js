@@ -13,6 +13,7 @@ import cookieParser from "cookie-parser";
 import cors from 'cors';
 import { createRequire } from "module";
 import dotenv from "dotenv"
+import usersRoute from "./routes/users.js";
 
 dotenv.config();
 
@@ -68,11 +69,17 @@ app.use("/Backend/auth", authRoutes);
 app.use("/Backend/usuarios", usuariosRoutes);
 app.use("/Backend/posts", postRoutes);
 app.use('/api', animalRoutes);
+
 app.use('/api', animalRoutes1);
 app.use('/api', CountRouter);
 app.use('/api', CountRouter1);
 app.use('/api',NombreRouter);
 app.use('/api',NombreRouter1);
+
+app.use(express.json())
+app.use("/api/users", usersRoute);
+
+
 
 app.get("/test", (req, res) => {
     res.json("Hola este es el backend");
