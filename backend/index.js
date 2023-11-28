@@ -8,6 +8,8 @@ import cors from 'cors';
 import { createRequire } from "module";
 import dotenv from "dotenv"
 import usersRoute from "./routes/users.js";
+import authmongoRoute from "./routes/authmongo.js";
+
 
 dotenv.config();
 
@@ -65,6 +67,8 @@ app.use("/Backend/posts", postRoutes);
 app.use('/api', animalRoutes);
 app.use(express.json())
 app.use("/api/users", usersRoute);
+app.use("/api/authmongo", authmongoRoute);
+
 
 
 app.get("/test", (req, res) => {
