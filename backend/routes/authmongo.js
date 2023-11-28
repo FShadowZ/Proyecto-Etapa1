@@ -1,6 +1,7 @@
 import  express from "express";
 import User from '../models/User.js';
 import CryptoJS from "crypto-js";
+import  jwt  from "jsonwebtoken";
 
 // resgisro
 
@@ -21,25 +22,43 @@ router.post("/register1", async (req, res) => {
 
 });
 
-// LOGIN
-router.post("/login1", async (req,res) => {
-    try{
+//LOGIN
 
-        const User = await User.findOne({username: req.body.username});
-        !User && res.status(401).json("Credenciales erroneas");
+router.post('/login1', async (req, res) => {
+    try{
+        const user = await User.findOne(
+            {
+                userName: req.body.user_name
+            }
+        );
+
+        !user && res.status(401).json("Wrong User Name");
 
         const hashedPassword = CryptoJS.AES.decrypt(
-            User.password, 
-            procces.env.PASS_SEC
-            );
+            user.password,
+            process.env.PASS_SEC
+        );
 
 
-        const password = hashedPassword.toString(CryptoJS.enc.Utf8);
+        const originalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
 
-        password !== req.body.password &&
-            res.status(401).json("Credenciales erroneas");
+        const inputPassword = req.body.password;
+        
+        originalPassword != inputPassword && 
+            res.status(401).json("Wrong Password");
 
-        res.status(200).json(user);
+        const accessToken = jwt.sign(
+        {
+            id: user._id,
+            isAdmin: user.isAdmin,
+        },
+        process.env.JWT_SEC,
+            {expiresIn:"3d"}
+        );
+  
+        const { password, ...others } = user._doc;  
+        res.status(200).json({...others, accessToken});
+
     }catch(err){
         res.status(500).json(err);
     }
