@@ -3,6 +3,9 @@ import authRoutes from "./routes/auth.js";
 import usuariosRoutes from "./routes/usuarios.js";
 import postRoutes from "./routes/posts.js";
 import animalRoutes from "./routes/animalRoutes.js";
+import NombreRouter from "./routes/NombreRouter.js"
+import CountRouter from "./routes/ContRouter.js";
+
 import cookieParser from "cookie-parser";
 import cors from 'cors';
 import { createRequire } from "module";
@@ -62,6 +65,8 @@ app.use("/Backend/auth", authRoutes);
 app.use("/Backend/usuarios", usuariosRoutes);
 app.use("/Backend/posts", postRoutes);
 app.use('/api', animalRoutes);
+app.use('/api', CountRouter);
+app.use('/api',NombreRouter);
 
 app.get("/test", (req, res) => {
     res.json("Hola este es el backend");

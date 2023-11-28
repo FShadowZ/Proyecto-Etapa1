@@ -13,6 +13,7 @@ export const register = (req,res)=>{
         // Hash contraseña y crear un usuario
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
+        //comentario ya que el commit no se realizo
 
         const q = "INSERT INTO usuarios (rut, password, correo_electronico) VALUES (?)";
         const values = [

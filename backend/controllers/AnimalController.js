@@ -1,4 +1,4 @@
-import { obtenerDetallesAnimalPorNombre, contarFilasAnimal as contarFilasAnimalModel } from '../models/AnimalModel.js';
+import { obtenerDetallesAnimalPorNombre } from '../models/AnimalModel.js';
 
 const obtenerDetallesAnimal = async (req, res) => {
   const nombreAnimal = req.params.nombre;
@@ -15,15 +15,6 @@ const obtenerDetallesAnimal = async (req, res) => {
   }
 };
 
-const contarFilasAnimal = async (req, res) => {
-  try {
-    const totalFilas = await contarFilasAnimalModel();
-    res.json({ total: totalFilas });
-    console.log(totalFilas)
-  } catch (error) {
-    console.error('Error al contar las filas:', error);
-    res.status(500).json({ message: 'Error interno del servidor' });
-  }
-};
-//
-export { obtenerDetallesAnimal, contarFilasAnimal };
+
+
+export { obtenerDetallesAnimal };
